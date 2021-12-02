@@ -1,12 +1,17 @@
 import java.io.File
 import kotlin.system.measureNanoTime
 
-abstract class Day(val file: String) {
+abstract class Day(day: Int) {
 
-    val folder = "src/main/resources/"
-
-    fun run(part1: Boolean = true, part2: Boolean = true, times: Int = 10000){
-        val fileName = folder + file
+    private val folder = "src/main/resources/"
+    private val filename = "day${day}.txt"
+    private val testname = "day${day}_test.txt"
+    fun run(part1: Boolean = true, part2: Boolean = true, times: Int = 10000,test: Boolean = false){
+        val fileName = if (test) {
+            folder + filename
+        } else{
+            folder+testname
+        }
         val lines = File(fileName).readLines()
         if (part1) {
             println("Result: ${part1(lines)}")

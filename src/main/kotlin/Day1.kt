@@ -1,4 +1,4 @@
-class Day1: Day("day1.txt") {
+class Day1: Day(1) {
 
     override fun part1(input: List<String> ): String{
         var deeper = 0

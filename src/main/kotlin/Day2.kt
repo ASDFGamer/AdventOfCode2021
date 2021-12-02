@@ -1,4 +1,4 @@
-class Day2: Day("day2.txt") {
+class Day2: Day(2) {
     //Part1: 8:10
     //Part2: +2 min
 
