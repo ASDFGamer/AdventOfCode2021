@@ -8,8 +8,8 @@ class Day2: Day("day2.txt") {
         var horizontal = 0
         for (line in input){
             val split = line.split(" ")
-            when(split[0]){
-                "forward" -> horizontal  += split[1].toInt()
+            when(split[0]) {
+                "forward" -> horizontal += split[1].toInt()
                 "down" -> depth += split[1].toInt()
                 "up" -> depth -= split[1].toInt()
                 else -> throw IllegalStateException(split[0])
@@ -17,6 +17,22 @@ class Day2: Day("day2.txt") {
         }
         return (depth*horizontal).toString()
         //Original: 157238 ns
+        //Optimised:  6369 ns
+    }
+
+    override fun part1Optimised(input: List<String>): String {
+        var depth = 0
+        var horizontal = 0
+        input.forEach{
+            when(it[0]){
+                'f' -> horizontal  += it[8].code -48
+                'd' -> depth += it[5].code -48
+                'u' -> depth -= it[3].code -48
+            }
+        }
+        return (depth*horizontal).toString()
+        //Original: 157238 ns
+        //Optimised:  6369 ns
     }
 
     override fun part2(input: List<String>): String {

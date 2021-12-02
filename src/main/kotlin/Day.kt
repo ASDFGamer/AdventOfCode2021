@@ -29,5 +29,8 @@ abstract class Day(val file: String) {
     }
 
     abstract fun part1(input:List<String>):String
+    open fun part1Optimised(input:List<String>):String{
+        TODO()
+    }
     abstract fun part2(input:List<String>):String
 }
