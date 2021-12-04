@@ -3,6 +3,26 @@ import kotlin.system.measureNanoTime
 
 abstract class Day(day: Int) {
 
+    fun runPart1(test: Boolean = true){
+        val fileName = if (test) {
+            folder + testname
+        } else{
+            folder+ filename
+        }
+        val lines = File(fileName).readLines()
+        println("Result: ${part1(lines)}")
+    }
+
+    fun runPart2(test: Boolean = true){
+        val fileName = if (test) {
+            folder + testname
+        } else{
+            folder+ filename
+        }
+        val lines = File(fileName).readLines()
+        println("Result: ${part2(lines)}")
+    }
+
     private val folder = "src/main/resources/"
     private val filename = "day${day}.txt"
     private val testname = "day${day}_test.txt"
