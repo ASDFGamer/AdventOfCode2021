@@ -3,53 +3,49 @@ import kotlin.system.measureNanoTime
 
 abstract class Day(day: Int) {
 
-    fun runPart1(test: Boolean = true){
-        val fileName = if (test) {
-            folder + testname
-        } else{
-            folder+ filename
-        }
-        val lines = File(fileName).readLines()
-        println("Result: ${part1(lines)}")
+    fun runPart1(test: Boolean = true, measureTime:Boolean = false, iterations: Int = 10000){
+        runPart(part = ::part1, test = test, measureTime=measureTime , iterations = iterations)
     }
 
-    fun runPart2(test: Boolean = true){
-        val fileName = if (test) {
-            folder + testname
-        } else{
-            folder+ filename
+    fun runPart2(test: Boolean = true,  measureTime:Boolean = false, iterations: Int = 10000){
+        runPart(part = ::part2, test = test, measureTime=measureTime, iterations = iterations)
+    }
+
+    private fun runPart(part: (List<String>) -> String, test :Boolean= true, measureTime:Boolean = false, iterations: Int = 10000){
+        val lines = loadFile(test)
+        println("Result: ${part(lines)}")
+        if (measureTime){
+            measureRuntime(block = {part(lines)}, iterations = iterations)
         }
-        val lines = File(fileName).readLines()
-        println("Result: ${part2(lines)}")
+    }
+
+    private fun measureRuntime(block: () -> Unit, iterations : Int = 10000) {
+        val time = measureNanoTime {
+            for (i in 1..iterations) {
+                block()
+            }
+        }
+        println("Time: ${time/iterations} ns")
+    }
+
+    private fun loadFile(test:Boolean = true): List<String>{
+        val fileName = if (test) {
+            folder + filename
+        } else{
+            folder+filename_test
+        }
+        return File(fileName).readLines()
     }
 
     private val folder = "src/main/resources/"
     private val filename = "day${day}.txt"
-    private val testname = "day${day}_test.txt"
-    fun run(part1: Boolean = true, part2: Boolean = true, times: Int = 10000,test: Boolean = false){
-        val fileName = if (test) {
-            folder + filename
-        } else{
-            folder+testname
-        }
-        val lines = File(fileName).readLines()
+    private val filename_test = "day${day}_test.txt"
+    fun run(part1: Boolean = true, part2: Boolean = true, times: Int = 10000,test: Boolean = false, measureTime: Boolean = true){
         if (part1) {
-            println("Result: ${part1(lines)}")
-            val time = measureNanoTime {
-                for (i in 1..times) {
-                    part1(lines)
-                }
-            }
-            println("Time: ${time/times} ns")
+            runPart1(test = test, measureTime =measureTime, iterations = times)
         }
         if (part2) {
-            println("Result: ${part2(lines)}")
-            val time = measureNanoTime {
-                for (i in 1..times) {
-                    part2(lines)
-                }
-            }
-            println("Time: ${(time/times)} ns")
+            runPart2(test = test, measureTime =measureTime, iterations = times)
         }
     }
 
