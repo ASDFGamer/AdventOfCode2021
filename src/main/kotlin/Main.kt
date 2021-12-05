@@ -1,4 +1,4 @@
 fun main() {
-    Day3().runPart2(test = false)
+    Day5().runPart2(test = false)
 }
 
