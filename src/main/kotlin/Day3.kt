@@ -1,5 +1,5 @@
 class Day3: Day(3){
-    override fun part1(input: List<String>): String {
+    override fun part1(input: List<String>, test: Boolean): String {
         val mostCommon = mutableListOf<Int>()
         for (i in 0 until input[0].length){
             mostCommon.add(0)
@@ -28,7 +28,7 @@ class Day3: Day(3){
         //10 min
     }
 
-    override fun part2(input: List<String>): String {
+    override fun part2(input: List<String>, test: Boolean): String {
         val mostCommon = mutableListOf<Int>()
         for (i in 0 until input[0].length){
             mostCommon.add(0)

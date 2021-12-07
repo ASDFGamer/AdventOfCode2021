@@ -2,16 +2,9 @@ import java.lang.Integer.max
 import java.lang.Integer.min
 
 class Day5: Day(5){
-    override fun part1(input: List<String>): String {
-        val size = 1000
-        val grid = mutableListOf<MutableList<Int>>()
-        for(i in 0 until size){
-            val line = mutableListOf<Int>()
-            for (j in 0 until size){
-                line.add(0)
-            }
-            grid.add(line)
-        }
+    override fun part1(input: List<String>, test: Boolean): String {
+        val size = if (test) 10 else 1000
+        val grid = generateMutableGrid(size, size, 0)
         for (line in input){
             val start_end = line.split(" -> ")
             val start = start_end[0].split(",")
@@ -35,27 +28,20 @@ class Day5: Day(5){
                 //throw IllegalStateException()
             }
         }
-        val haeufig = mutableListOf<Int>()
-        for (i in 0..10){
-            haeufig.add(0)
-        }
-        for (line in grid){
-            for (cell in line){
-                haeufig[cell]++
+        if (test) {
+            for (line in grid) {
+                println(line)
             }
         }
-        var result = 0
-        for (i in 2 .. 10){
-            result += haeufig[i]
-        }
-//        for (line in grid){
-//            println(line)
-//        }
+        val linesPerCell = generateMutableList(10,0)
+        grid.forEach{ line -> line.forEach{linesPerCell[it]++} }
+        val result = linesPerCell.sum()-linesPerCell[0]-linesPerCell[1]
         return result.toString()
         //20 min
+        //runtime: 16915340 ns
     }
 
-    override fun part2(input: List<String>): String {
+    override fun part2(input: List<String>, test: Boolean): String {
         val size = 1000
         val grid = mutableListOf<MutableList<Int>>()
         for(i in 0 until size){
@@ -121,6 +107,7 @@ class Day5: Day(5){
 //        }
         return result.toString()
         //10 min
+        //runtime: 28573997 ns
     }
 
 }

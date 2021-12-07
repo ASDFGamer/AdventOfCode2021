@@ -1,6 +1,6 @@
 class Day1: Day(1) {
 
-    override fun part1(input: List<String> ): String{
+    override fun part1(input: List<String>, test: Boolean): String{
         var deeper = 0
         for (line in 1 until input.size){
             if ( input[line] > input[line-1]){
@@ -17,7 +17,7 @@ class Day1: Day(1) {
         return deeper.toString()
     }
 
-    override fun part2(input: List<String> ):String {
+    override fun part2(input: List<String>, test: Boolean):String {
         var line1 = -1
         var line2 = -1
         var line3 = -1

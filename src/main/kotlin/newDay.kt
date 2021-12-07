@@ -15,11 +15,11 @@ fun main(){
     val day: Int = LocalDateTime.now().dayOfMonth
     val template = """
     class Day$day: Day($day){
-        override fun part1(input: List<String>): String {
+        override fun part1(input: List<String>, test:Boolean): String {
             TODO("Not yet implemented")
         }
 
-        override fun part2(input: List<String>): String {
+        override fun part2(input: List<String>,  test:Boolean): String {
             TODO("Not yet implemented")
         }
 

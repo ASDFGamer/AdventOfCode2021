@@ -3,7 +3,7 @@ class Day2: Day(2) {
     //Part2: +2 min
 
 
-    override fun part1(input: List<String>): String {
+    override fun part1(input: List<String>, test: Boolean): String {
         var depth = 0
         var horizontal = 0
         for (line in input){
@@ -35,7 +35,7 @@ class Day2: Day(2) {
         //Optimised:  6369 ns
     }
 
-    override fun part2(input: List<String>): String {
+    override fun part2(input: List<String>, test: Boolean): String {
         var aim = 0
         var depth = 0
         var horizontal = 0

@@ -11,11 +11,11 @@ abstract class Day(day: Int) {
         runPart(part = ::part2, test = test, measureTime=measureTime, iterations = iterations)
     }
 
-    private fun runPart(part: (List<String>) -> String, test :Boolean= true, measureTime:Boolean = false, iterations: Int = 10000){
+    private fun runPart(part: (List<String>, Boolean) -> String, test :Boolean= true, measureTime:Boolean = false, iterations: Int = 10000){
         val lines = loadFile(test)
-        println("Result: ${part(lines)}")
+        println("Result: ${part(lines, test)}")
         if (measureTime){
-            measureRuntime(block = {part(lines)}, iterations = iterations)
+            measureRuntime(block = {part(lines, test)}, iterations = iterations)
         }
     }
 
@@ -30,16 +30,16 @@ abstract class Day(day: Int) {
 
     private fun loadFile(test:Boolean = true): List<String>{
         val fileName = if (test) {
-            folder + filename
+            folder + filenameTest
         } else{
-            folder+filename_test
+            folder+filename
         }
         return File(fileName).readLines()
     }
 
     private val folder = "src/main/resources/"
     private val filename = "day${day}.txt"
-    private val filename_test = "day${day}_test.txt"
+    private val filenameTest = "day${day}_test.txt"
     fun run(part1: Boolean = true, part2: Boolean = true, times: Int = 10000,test: Boolean = false, measureTime: Boolean = true){
         if (part1) {
             runPart1(test = test, measureTime =measureTime, iterations = times)
@@ -49,9 +49,9 @@ abstract class Day(day: Int) {
         }
     }
 
-    abstract fun part1(input:List<String>):String
+    abstract fun part1(input: List<String>, test: Boolean):String
     open fun part1Optimised(input:List<String>):String{
         TODO()
     }
-    abstract fun part2(input:List<String>):String
+    abstract fun part2(input: List<String>, test: Boolean):String
 }

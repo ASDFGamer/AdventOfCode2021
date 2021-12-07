@@ -1,5 +1,5 @@
 class Day4: Day(4){
-    override fun part1(input: List<String>): String {
+    override fun part1(input: List<String>, test: Boolean): String {
         val numbers = input[0].split(",")
         val boards = getBoards(input.subList(2, input.size))
         var boardHasWon: Board? = null
@@ -43,7 +43,7 @@ class Day4: Day(4){
         return boards
     }
 
-    override fun part2(input: List<String>): String {
+    override fun part2(input: List<String>, test: Boolean): String {
         val numbers = input[0].split(",")
         val boards = getBoards(input.subList(2, input.size))
         val boardHasWon = mutableListOf<Board>()
