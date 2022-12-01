@@ -37,7 +37,7 @@ abstract class Day(day: Int) {
         return File(fileName).readLines()
     }
 
-    private val folder = "src/main/resources/"
+    private val folder = "src/main/resources/$year/"
     private val filename = "day${day}.txt"
     private val filenameTest = "day${day}_test.txt"
     fun run(part1: Boolean = true, part2: Boolean = true, times: Int = 10000,test: Boolean = false, measureTime: Boolean = true){
