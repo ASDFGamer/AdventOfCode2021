@@ -1,3 +1,6 @@
+package year2021
+
+import Day
 import java.lang.Math.abs
 
 class Day7: Day(7){
@@ -7,7 +10,7 @@ class Day7: Day(7){
         val maxPos = positions.maxOrNull()
         var bestCost = Int.MAX_VALUE
         for (i in minPos!! ..maxPos!!){
-            var cost = 0;
+            var cost = 0
             for (position in positions){
                 cost+=abs(position-i)
             }
@@ -24,7 +27,7 @@ class Day7: Day(7){
         val maxPos = positions.maxOrNull()
         var bestCost = Int.MAX_VALUE
         for (i in minPos!! ..maxPos!!){
-            var cost = 0;
+            var cost = 0
             for (position in positions){
                 cost+=moreCosts(abs(position-i))
             }

@@ -1,6 +1,10 @@
+package year2021
+
+import Day
+
 class Day14: Day(14){
     override fun part1(input: List<String>, test:Boolean): String {
-        var polymer = input[0]
+        val polymer = input[0]
         val iterations = 10
         val rules = mutableMapOf<String, String>()
         //Pair, Depth, (Char, Counts)
@@ -78,7 +82,7 @@ class Day14: Day(14){
             rules["" + input[i][0] +input[i][1] ] = "${input[i][0]}${input[i].last()}" //${input[i][1]}"
         }
         for (i in 0 until iterations){
-            var newPolymer = StringBuilder()
+            val newPolymer = StringBuilder()
             for (j in 0.. polymer.length-2){
                 newPolymer.append(rules[polymer.substring(j,j+2)])
             }

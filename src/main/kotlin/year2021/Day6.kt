@@ -1,6 +1,11 @@
+package year2021
+
+import Day
+import generateMutableList
+
 class Day6: Day(6){
     override fun part1(input: List<String>, test:Boolean): String {
-        var fishes: MutableList<Int> = input[0].split(",").map { it.toInt() }.toMutableList()
+        val fishes: MutableList<Int> = input[0].split(",").map { it.toInt() }.toMutableList()
         val days = 80
         val newfischesonDay = generateMutableList(days, 0)
         for (fish in fishes){

@@ -1,3 +1,7 @@
+package year2021
+
+import Day
+
 class Day4: Day(4){
     override fun part1(input: List<String>, test: Boolean): String {
         val numbers = input[0].split(",")

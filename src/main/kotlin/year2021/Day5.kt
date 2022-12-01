@@ -1,3 +1,8 @@
+package year2021
+
+import Day
+import generateMutableGrid
+import generateMutableList
 import java.lang.Integer.max
 import java.lang.Integer.min
 
@@ -33,7 +38,7 @@ class Day5: Day(5){
                 println(line)
             }
         }
-        val linesPerCell = generateMutableList(10,0)
+        val linesPerCell = generateMutableList(10, 0)
         grid.forEach{ line -> line.forEach{linesPerCell[it]++} }
         val result = linesPerCell.sum()-linesPerCell[0]-linesPerCell[1]
         return result.toString()
@@ -71,7 +76,7 @@ class Day5: Day(5){
                     grid[startInt][i] ++
                 }
             }else{
-                var curr_pos = mutableListOf<Int>(start[0].toInt(), start[1].toInt())
+                val curr_pos = mutableListOf<Int>(start[0].toInt(), start[1].toInt())
 
                 while(end[1].toInt() != curr_pos[1]){
                     grid[curr_pos[1]][curr_pos[0]] ++

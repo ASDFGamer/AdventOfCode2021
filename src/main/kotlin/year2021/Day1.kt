@@ -1,3 +1,7 @@
+package year2021
+
+import Day
+
 class Day1: Day(1) {
 
     override fun part1(input: List<String>, test: Boolean): String{

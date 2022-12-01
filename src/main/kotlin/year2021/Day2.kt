@@ -1,3 +1,7 @@
+package year2021
+
+import Day
+
 class Day2: Day(2) {
     //Part1: 8:10
     //Part2: +2 min

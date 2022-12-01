@@ -1,3 +1,7 @@
+package year2021
+
+import Day
+
 class Day3: Day(3){
     override fun part1(input: List<String>, test: Boolean): String {
         val mostCommon = mutableListOf<Int>()
