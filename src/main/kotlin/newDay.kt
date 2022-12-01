@@ -8,8 +8,8 @@ import java.time.LocalDateTime
 
 
 val projectDirAbsolutePath = Paths.get("").toAbsolutePath().toString()
-val srcDir: Path = Paths.get(projectDirAbsolutePath, "/src/main/kotlin/")
-val resDir = Paths.get(projectDirAbsolutePath, "/src/main/resources/")
+val srcDir: Path = Paths.get(projectDirAbsolutePath, "/src/main/kotlin/year$year/")
+val resDir = Paths.get(projectDirAbsolutePath, "/src/main/resources/$year/")
 
 fun main(){
     val day: Int = LocalDateTime.now().dayOfMonth
@@ -28,8 +28,8 @@ fun main(){
     val className = "Day$day.kt"
     srcDir.resolve(className).toFile().writeText(template)
 
-    val cookie = resDir.resolve(".cookie").toFile().readLines()[0]
-    val uri = "https://adventofcode.com/2021/day/$day/input"
+    val cookie = resDir.resolve("2022/.cookie").toFile().readLines()[0]
+    val uri = "https://adventofcode.com/$year/day/$day/input"
     val client = HttpClient.newHttpClient()
     val request = HttpRequest.newBuilder()
         .uri(URI.create(uri))
